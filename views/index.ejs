@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create task Book</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+<div class="main h-[100vh] w-[100vw] bg-linear-to-b from-indigo-300 to-teal-600 flex flex-col">
+    <div class="h-auto min-w-[50vw] max-w-[70vw] bg-linear-to-b from-zinc-700 to-indigo-300 text-white shadow-lg ml-auto mr-auto mt-5 p-5 rounded-2xl ">
+        <form action="/create" method="post"
+        class="flex flex-col item-center justify-baseline text-xl gap-y-2 "
+        >
+            <input type="text" name="title" placeholder="Enter Title here"
+            class="p-2 bg-gray-500 outline-none  rounded-xl"
+            >
+            <textarea name="description" placeholder="Write something about"
+            class="resize-none my-3 bg-gray-500 p-3 outline-none rounded-xl"
+            ></textarea>
+            <input type="submit" value="Create Task" class="w-auto bg-indigo-500 px-6 py-3 rounded-xl">
+        </form>
+    </div>
+    <div class="flex flex-wrap gap-x-3 p-7">
+        <% if(files.length > 0){%>
+            <%files.map((file)=>{%>
+                <div class="bg-linear-to-r from-pink-600 to-purple-400 min-w-content max-w-90 min-h-30 text-black p-3 rounded-xl flex flex-col item-center justify-center">
+                    <h1 class="text-xl text-indigo-700 "><%= file%></h1>
+                    <a href="/files/<%= file%>" class="text-indigo-950 underline">Read more</a>
+                </div>
+            <%})%>
+        <%}else{%>
+            <h1 class="text-xl text-indigo-700 ">No tasks to show.</h1>
+        <%} %>
+        
+    </div>
+</div>
+</body>
+</html>
